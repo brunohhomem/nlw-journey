@@ -4,6 +4,9 @@ import com.rs.planner.trip.Trip;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.UUID;
+
 @Service
 public class ActivityService {
 
@@ -18,5 +21,13 @@ public class ActivityService {
 
         return new ActivityResponse(newActivity.getId());
 
+    }
+
+    public List<ActivityData> getAllActivitiesFromId(UUID tripId) {
+        return this.activityRepository.findByTripId(tripId).stream().map(activity ->
+                new ActivityData(
+                        activity.getId(),
+                        activity.getTitle(),
+                        activity.getOccursAt())).toList();
     }
 }
