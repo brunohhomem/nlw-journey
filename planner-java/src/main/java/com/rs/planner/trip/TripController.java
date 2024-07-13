@@ -1,5 +1,8 @@
 package com.rs.planner.trip;
 
+import com.rs.planner.activities.ActivityRequestPayload;
+import com.rs.planner.activities.ActivityResponse;
+import com.rs.planner.activities.ActivityService;
 import com.rs.planner.participant.ParticipantCreateResponse;
 import com.rs.planner.participant.ParticipantData;
 import com.rs.planner.participant.ParticipantRequestPayload;
@@ -20,6 +23,9 @@ public class TripController {
 
     @Autowired
     private ParticipantService participantService;
+
+    @Autowired
+    private ActivityService activityService;
 
     @Autowired
     private TripRepository repository;
@@ -90,7 +96,21 @@ public class TripController {
             return ResponseEntity.ok(participantResponse);
         }
         return ResponseEntity.notFound().build();
+    }
 
+    @PostMapping("/{id}/activities")
+    public ResponseEntity<ActivityResponse> registerActivity(@PathVariable UUID id, @RequestBody ActivityRequestPayload payload) {
+
+        Optional<Trip> trip = this.repository.findById(id);
+
+        if (trip.isPresent()) {
+            Trip rawTrip = trip.get();
+
+            ActivityResponse activityResponse = this.activityService.registerActivity(payload, rawTrip);
+
+            return ResponseEntity.ok(activityResponse);
+        }
+        return ResponseEntity.notFound().build();
     }
 
     @GetMapping("/{tripId}/participants")
