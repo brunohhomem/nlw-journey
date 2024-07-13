@@ -1,4 +1,4 @@
-package com.rs.planner.activities;
+package com.rs.planner.activity;
 
 import com.rs.planner.trip.Trip;
 import org.springframework.beans.factory.annotation.Autowired;
