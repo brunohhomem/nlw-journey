@@ -4,6 +4,7 @@ import com.rs.planner.activity.ActivityData;
 import com.rs.planner.activity.ActivityRequestPayload;
 import com.rs.planner.activity.ActivityResponse;
 import com.rs.planner.activity.ActivityService;
+import com.rs.planner.link.LinkData;
 import com.rs.planner.link.LinkRequestPayload;
 import com.rs.planner.link.LinkResponse;
 import com.rs.planner.link.LinkService;
@@ -153,11 +154,10 @@ public class TripController {
         return ResponseEntity.notFound().build();
     }
 
-//    @GetMapping("/{tripId}/activities")
-//    public ResponseEntity<List<ActivityData>> getAllActivities(@PathVariable UUID tripId) {
-//        List<ActivityData> activityList = this.activityService.getAllActivitiesFromId(tripId);
-//
-//        return ResponseEntity.ok(activityList);
-//    }
+    @GetMapping("/{tripId}/links")
+    public ResponseEntity<List<LinkData>> getAllLinksFromTrip(@PathVariable UUID tripId) {
+        List<LinkData> linkData = this.linkService.getAllLinksFromTrip(tripId);
 
+        return ResponseEntity.ok(linkData);
+    }
 }
