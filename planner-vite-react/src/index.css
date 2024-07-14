@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Impedir pré configuração do navegador para larguras */
+* {
+  min-width: 0;
+}
