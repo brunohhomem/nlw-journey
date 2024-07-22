@@ -81,6 +81,7 @@ export function CreateTripPage() {
           </p>
         </div>
 
+        {/* Destination and Invite */}
         <div className="space-y-4">
           <DestinationAndDateStep
             closeGuestInput={closeGuestInput}

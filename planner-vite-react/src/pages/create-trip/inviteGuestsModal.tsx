@@ -47,6 +47,7 @@ export function InviteGuestsModal({
           })}
         </div>
 
+        {/* Separador */}
         <div className="w-full h-px bg-zinc-800"></div>
 
         <form

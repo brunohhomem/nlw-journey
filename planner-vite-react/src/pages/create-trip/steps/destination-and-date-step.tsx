@@ -33,6 +33,7 @@ export function DestinationAndDateStep({
         />
       </div>
 
+      {/* Separador */}
       <div className="w-px h-6 bg-zinc-800" />
 
       {isGuestInputOpen ? (
